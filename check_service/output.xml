@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170302 21:31:19.338" generator="Robot 3.0 (Python 2.7.12 on linux2)">
+<suite source="/home/luckee/robot_framework/service.robot" id="s1" name="Service">
+<test id="s1-t1" name="Execute test_case1">
+<kw name="Run Testcase" library="robot_library">
+<arguments>
+<arg>test_case1.py</arg>
+</arguments>
+<msg timestamp="20170302 21:31:19.438" level="INFO">None
+python: can't open file 'tcid': [Errno 2] No such file or directory</msg>
+<status status="PASS" endtime="20170302 21:31:19.438" starttime="20170302 21:31:19.423"></status>
+</kw>
+<doc>Checking if docker service is running fine</doc>
+<tags>
+<tag>This is for tagging</tag>
+<tag>This is test. This is test.</tag>
+</tags>
+<status status="PASS" endtime="20170302 21:31:19.439" critical="yes" starttime="20170302 21:31:19.421"></status>
+</test>
+<test id="s1-t2" name="Execute test_case2">
+<kw name="Run Testcase" library="robot_library">
+<arguments>
+<arg>test_case2.py</arg>
+</arguments>
+<msg timestamp="20170302 21:31:19.459" level="INFO">None
+python: can't open file 'tcid': [Errno 2] No such file or directory</msg>
+<status status="PASS" endtime="20170302 21:31:19.459" starttime="20170302 21:31:19.441"></status>
+</kw>
+<doc>Checking if ssh deamon is running fine</doc>
+<tags>
+<tag>This is for tagging</tag>
+<tag>This is test. This is test.</tag>
+</tags>
+<status status="PASS" endtime="20170302 21:31:19.460" critical="yes" starttime="20170302 21:31:19.440"></status>
+</test>
+<doc>Test Suite for functionality of Service check</doc>
+<status status="PASS" endtime="20170302 21:31:19.460" starttime="20170302 21:31:19.341"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="2">This is for tagging</stat>
+<stat fail="0" pass="2">This is test. This is test.</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Service" pass="2">Service</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
