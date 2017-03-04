@@ -54,7 +54,7 @@ def exec_command(cmd):
      print "No such service !!"
      sys.exit(1)
  
-  if any("inactive" or "Dead" in s for s in output):
+  if any("Dead" in s for s in output):
      print "Service is down !!"
      sys.exit(1)
  
