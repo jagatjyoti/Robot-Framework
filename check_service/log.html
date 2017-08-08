@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 3.0 (Python 2.7.12 on linux2)" name="Generator">
+<meta content="Robot Framework 3.0.2 (Python 2.7.12 on linux2)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAJEBoACtnfgA5cYYAERsiAEx2lAAbKkQAcazBACZCVwAcM1cAK0ucAAMDBQAnQncASG+FABkoVQAyWmgA6f8SgvH/Ij99+GLyIinyJfn/Yi//KSLzUy9iZogpIld3/4JVVTkid7vyUjNVNVJEAGOZ6Z7pXwAABpmZkRiLAAAGiJZpmGAAAEEt3SXdxAAATC7o/u3EAAC8MRZpjasAAAY1VVVTYAAABKqqqqpAAAAADKqq4AAAAAAAv4sAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMADAADgAwAA4AcAAOAHAADgBwAAwAcAAOAHAADgDwAA8A8AAPg/AAD+fwAA">
 <style media="all" type="text/css">
 /* Generic and misc styles */
@@ -510,7 +510,7 @@ a:link, a:visited {
 .doc pre {
     font-size: 1.1em;
     letter-spacing: 0.05em;
-    background: #eee;
+    background: #f4f4f4;
 }
 .doc code {
     padding: 0 0.2em;
@@ -1201,8 +1201,16 @@ window.util = function () {
         var base = window.output ? window.output.baseMillis : 0;
         return new Date(base + millis);
     }
-    function createGeneratedAgoString(generatedMillis) {
-        generatedMillis = timestamp(generatedMillis);
+    function createGeneratedString(timestamp) {
+        var date = new Date(timestamp);
+        var dt = dateTimeFromDate(date).slice(0, 17);  // drop millis
+        var offset = date.getTimezoneOffset();
+        var sign = offset > 0 ? '-' : '+';
+        var hours = Math.floor(Math.abs(offset) / 60);
+        var mins = Math.abs(offset) % 60;
+        return dt + ' GMT' + sign + padTo(hours, 2) + ':' + padTo(mins, 2);
+    }
+    function createGeneratedAgoString(timestamp) {
         function timeString(time, shortUnit) {
             var unit = {y: 'year', d: 'day', h: 'hour', m: 'minute',
                         s: 'second'}[shortUnit];
@@ -1213,7 +1221,7 @@ window.util = function () {
             // Not a perfect algorithm but ought to be enough
             return days - Math.floor(years / 4);
         }
-        var generated = Math.round(generatedMillis / 1000);
+        var generated = Math.round(timestamp / 1000);
         var current = Math.round(new Date().getTime() / 1000);
         var elapsed = current - generated;
         var prefix = '';
@@ -1272,6 +1280,7 @@ window.util = function () {
         dateTimeFromDate: dateTimeFromDate,
         formatElapsed: formatElapsed,
         timestamp: timestamp,
+        createGeneratedString: createGeneratedString,
         createGeneratedAgoString: createGeneratedAgoString,
         parseQueryString: parseQueryString
     };
@@ -1572,6 +1581,7 @@ function setTitle(suiteName, type) {
     document.title = util.unescape(title);
 }
 function addHeader() {
+    var generated = util.timestamp(window.output.generated);
     $.tmpl('<h1>${title}</h1>' +
            '<div id="generated">' +
              '<span>Generated<br>${generated}</span><br>' +
@@ -1580,8 +1590,8 @@ function addHeader() {
            '<div id="top-right-header">' +
              '<div id="report-or-log-link"><a href="#"></a></div>' +
            '</div>', {
-        generated: window.output.generatedTimestamp,
-        ago: util.createGeneratedAgoString(window.output.generatedMillis),
+        generated: util.createGeneratedString(generated),
+        ago: util.createGeneratedAgoString(generated),
         title: document.title
     }).appendTo($('#header'));
 }
@@ -1717,28 +1727,25 @@ function stopPropagation(event) {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,4,[],[1,0,119],[],[[5,0,1,6,[7,8],[1,80,18],[[0,9,10,0,0,11,0,0,[1,82,15],[],[[97,2,12]]]]],[13,0,1,14,[7,8],[1,99,20],[[0,9,10,0,0,15,0,0,[1,100,18],[],[[118,2,12]]]]]],[],[2,2,2,2]];
+window.output["suite"] = [1,2,3,4,[],[1,0,928],[],[[5,0,1,6,[7,8],[1,22,452],[[0,9,10,0,0,11,0,0,[1,23,450],[],[[473,2,12]]]]],[13,0,1,14,[7,8],[1,475,452],[[0,9,10,0,0,15,0,0,[1,476,450],[],[[926,2,16]]]]]],[],[2,2,2,2]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*Service","*/home/luckee/robot_framework/service.robot","*service.robot","*<p>Test Suite for functionality of Service check\x3c/p>","*Execute test_case1","*<p>Checking if docker service is running fine\x3c/p>","*This is for tagging","*This is test. This is test.","*Run Testcase","*robot_library","*test_case1.py","*None\npython: can't open file 'tcid': [Errno 2] No such file or directory","*Execute test_case2","*<p>Checking if ssh deamon is running fine\x3c/p>","*test_case2.py"]);
+window.output["strings"] = window.output["strings"].concat(["*","*Service","*/home/zarvis/Robot-Framework/check_service/service.robot","*service.robot","*<p>Test Suite for functionality of Service check\x3c/p>","*Execute test_case1","*<p>Checking if docker service is running fine\x3c/p>","*This is for tagging","*This is test. This is test.","*Run Testcase","*robot_library","*test_case1.py","eNqtlt9P4zgQx9/7V8z2BdBdEidN0zRskBDsD3SHhG57DyvYBzd2W4vEjmynLPvX3zhJN8CqiNPWqurWsb/+zHhmnDx/WxtB1y42vLgXcg1MFfdcg+F6KwoOP9sof6viQj86IaugUFLywrqfG2Us+L4/uujGhJLwwVi6LIXZcAbv3o28XfuHm6a0u38j1dgMbpujuyaaFqse0N8BenDZEZ/XdSkK2irjJpYKiaMf5Br7O3n0JzRHaMbfijLOMijbHo6DUiwD82gsr1jfB893OAUuEZOzU9hyyZSGWnPDkakfPxnUz9GwLc+Atj0c60ZK9MUJGCGRddFwiEg480iKHwhnWRxnJILPfy1OYVYJCXStBjVwppkM3lPYaL7Kxxtra5MFDtD4PWWhqjs5Ptv76H1AzzrBa/QI3FxdZhASMofjbtZTfFhQc48bhskwds0rpR8zmM789PopG1zc/JvBZD6pzDB88Umrps6gd6Vv8Ej4C4c+E2mbO9mwcN+EtGxBY3SwFLJfycD7PHhhxdBOZ3P/Y7DwhWLcK4ZR1EeNV+wCAyXLQbKR4jtqBVuqAzyzflsXG8OC4BcJ3+DI+Ow3Fjt08DyzEdWvhN2w51XcalEYT0iLDqRlTtwSS7X1rKg4pgdEVTdkuceEhtdRnvrAw1lOZLc7/i368+m782YNT2O1WeKKpp/Pbt1xfcvAaeTjIbYXu/l+HMVpkkZh9AdJM0LGUPItL3MhVwoqs87HnzStN1CJte5yt6sblkvrUcYw1QxdilLYR3yi7oH4hGB1winMjA/GOCXTcDIhzxkfqHbZ22F+VY0GlJO8RGFuQCoLpqlrpbF/oDVUbaZAKSph/QOiTeZhMpnuc58raA7y56li/rbB8T8RsDa/QpHGZEoSMt9H8VFo/kDLkkFf8jJY0dLwQ7lhFk/maRyl6T6AS76ieGnAUgu25rviRk5AGKDGiLXEav8g7AaohKsb6EMLiSI/nPkYVUGY+HBJ8RAlqLoNRc9bihoKXLHk0BhUwODE0g/U3QErrjUODWIHM3Y+T8KEvAzH18+cKckPFnUpVs2IkOnepO39tKEGIaq65BY9IaSwgpbiR5vIh2SZkjTZG3v9/c9apLHjwQTMk2USx7yAtSsvTON1rHParAxe4togXh76YeRPXofsXwxuQyT84pIKrXzD64Z/KNPDmJAonSf7TD+/ucJ6g4wYsvJl2e+uJ0T5NvrSvyxhMjQ1vmv9B9ngFz8=","*Execute test_case2","*<p>Checking if ssh deamon is running fine\x3c/p>","*test_case2.py","eNq9lFFvmzAQx9/5FNenJNIChhFIHeWhS6Zt2qJVS/bUVhOBS4IKNrJxtuzT7yCgpF0jRUq3E2Bj4/v/f2eL8fi8sKCNyQbjx1SsQesNaFTbNEY4hDU+N+NC7ao0pYRYCoFxWXU3Updg27Y12Y+lUsB7XUbLLNUbTODqyuq38Q21ycr2zZKm5HBnOvfGG8Sryp7d2uvD1wLFu/kU5hgbhTDfYJbV7lHdi84bMB3y/kVGCSYcsrqFrpOlS0fvdIl50rTOUdoRoCBjmIxgiyKRCgqFGslFM947pL4hlC1yiOoWusoIQfQ90KkggwuD4DE37LMhXeCG3Pc5Y/Dx82IEYZ4KiNayzTaL6P3205SDy5gHXbJ0LAWLSD9qmjwMzTCXaschtL3Z0Ye0mbff6UM/zPVhePJBSVNwaIhtnRHrMfeTDHVUJXf96slY7ckxWjl6mYpqXQL9abOmaW7MGhrMgHsumKURpam2LLlzB2+DB04Fi7EoaReKSOufUiWwogL/jsiBhpWSOQRD2/XoHgS257tQSFXCYOgGfpXHO1+piPIfRqS/6jpyjVrToetxaHog6ejgXt5QBVoPyx10TZqMWe9vqetq755KBdcXQQUnoE4p/ReogHkXQQ3PhtorvT7UwOX+s0MRXHb8QvYy1EmlfwPlPZMK2UVQ3mmoF5VeA+rBmje/b5oxBf36/wCCQgy1"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:00","fail":0,"label":"Critical Tests","pass":2},{"elapsed":"00:00:00","fail":0,"label":"All Tests","pass":2}],[{"elapsed":"00:00:00","fail":0,"label":"This is for tagging","pass":2},{"elapsed":"00:00:00","fail":0,"label":"This is test. This is test.","pass":2}],[{"elapsed":"00:00:00","fail":0,"id":"s1","label":"Service","name":"Service","pass":2}]];
+window.output["stats"] = [[{"elapsed":"00:00:01","fail":0,"label":"Critical Tests","pass":2},{"elapsed":"00:00:01","fail":0,"label":"All Tests","pass":2}],[{"elapsed":"00:00:01","fail":0,"label":"This is for tagging","pass":2},{"elapsed":"00:00:01","fail":0,"label":"This is test. This is test.","pass":2}],[{"elapsed":"00:00:01","fail":0,"id":"s1","label":"Service","name":"Service","pass":2}]];
 </script>
 <script type="text/javascript">
 window.output["errors"] = [];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1488470479341;
+window.output["baseMillis"] = 1502185907502;
 </script>
 <script type="text/javascript">
-window.output["generatedMillis"] = -341;
-</script>
-<script type="text/javascript">
-window.output["generatedTimestamp"] = "20170302 21:31:19 GMT +05:30";
+window.output["generated"] = 935;
 </script>
 <script type="text/javascript">
 window.settings = {"defaultLevel":"INFO","minLevel":"INFO","reportURL":"report.html","splitLogBase":"log","title":""};

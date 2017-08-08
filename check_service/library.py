@@ -12,7 +12,7 @@ def set_connection():
      s = paramiko.SSHClient()
      s.set_missing_host_key_policy(paramiko.AutoAddPolicy())
      print "Trying to connect to host ..."
-     s.connect('192.168.87.130', username='luckee', password='robot@123')
+     s.connect('68.128.156.119', username='zarvis', password='lucky@123')
      print "Connection Established !!"
  
   except KeyboardInterrupt:
@@ -41,8 +41,8 @@ def exec_command(cmd):
   output = stdout.readlines()
   print "out: " + str(output)
 
-  for o in output:
-  	print o
+#  for o in output:
+#  	print o
 
  
   e=stderr.readlines()

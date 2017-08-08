@@ -1,40 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20170302 21:31:19.338" generator="Robot 3.0 (Python 2.7.12 on linux2)">
-<suite source="/home/luckee/robot_framework/service.robot" id="s1" name="Service">
+<robot generated="20170808 02:51:47.501" generator="Robot 3.0.2 (Python 2.7.12 on linux2)">
+<suite source="/home/zarvis/Robot-Framework/check_service/service.robot" id="s1" name="Service">
 <test id="s1-t1" name="Execute test_case1">
 <kw name="Run Testcase" library="robot_library">
 <arguments>
 <arg>test_case1.py</arg>
 </arguments>
-<msg timestamp="20170302 21:31:19.438" level="INFO">None
-python: can't open file 'tcid': [Errno 2] No such file or directory</msg>
-<status status="PASS" endtime="20170302 21:31:19.438" starttime="20170302 21:31:19.423"></status>
+<msg timestamp="20170808 02:51:47.975" level="INFO">========================================
+       Checking docker service          
+========================================
+Trying to connect to host ...
+Connection Established !!
+---------Result--------
+out: [u'\u25cf docker.service - Docker Application Container Engine\n', u'   Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)\n', u'   Active: active (running) since Tue 2017-08-08 17:44:02 HKT; 7min ago\n', u'     Docs: https://docs.docker.com\n', u' Main PID: 1009 (dockerd)\n', u'    Tasks: 16\n', u'   Memory: 57.8M\n', u'      CPU: 393ms\n', u'   CGroup: /system.slice/docker.service\n', u'           \u251c\u25001009 /usr/bin/dockerd -H fd://\n', u'           \u2514\u25001122 docker-containerd -l unix:///var/run/docker/libcontainerd/docker-containerd.sock --shim docker-containerd-shim --metrics-interval=0 --start-timeout 2m --state-dir /var/run/docker/libcontainerd/containerd --runtime docker-runc\n', u'\n', u'Aug 08 17:44:02 ubuntu dockerd[1009]: time="2017-08-08T17:44:02.424868212+08:00" level=info msg="Graph migration to content-addressability took 0.00 seconds"\n', u'Aug 08 17:44:02 ubuntu dockerd[1009]: time="2017-08-08T17:44:02.425051330+08:00" level=warning msg="Your kernel does not support swap memory limit."\n', u'Aug 08 17:44:02 ubuntu dockerd[1009]: time="2017-08-08T17:44:02.425391635+08:00" level=info msg="Loading containers: start."\n', u'Aug 08 17:44:02 ubuntu dockerd[1009]: ...time="2017-08-08T17:44:02.484050609+08:00" level=info msg="Firewalld running: false"\n', u'Aug 08 17:44:02 ubuntu dockerd[1009]: time="2017-08-08T17:44:02.743984288+08:00" level=info msg="Default bridge (docker0) is assigned with an IP address 172.17.0.0/16. Daemon option --bip can be used to set a preferred IP address"\n', u'Aug 08 17:44:02 ubuntu dockerd[1009]: time="2017-08-08T17:44:02.799616030+08:00" level=info msg="Loading containers: done."\n', u'Aug 08 17:44:02 ubuntu dockerd[1009]: time="2017-08-08T17:44:02.800120052+08:00" level=info msg="Daemon has completed initialization"\n', u'Aug 08 17:44:02 ubuntu dockerd[1009]: time="2017-08-08T17:44:02.800150869+08:00" level=info msg="Docker daemon" commit=6b644ec graphdriver=aufs version=1.12.3\n', u'Aug 08 17:44:02 ubuntu systemd[1]: Started Docker Application Container Engine.\n', u'Aug 08 17:44:02 ubuntu dockerd[1009]: time="2017-08-08T17:44:02.814002896+08:00" level=info msg="API listen on /var/run/docker.sock"\n']
+Service is up !!</msg>
+<status status="PASS" endtime="20170808 02:51:47.975" starttime="20170808 02:51:47.525"></status>
 </kw>
 <doc>Checking if docker service is running fine</doc>
 <tags>
 <tag>This is for tagging</tag>
 <tag>This is test. This is test.</tag>
 </tags>
-<status status="PASS" endtime="20170302 21:31:19.439" critical="yes" starttime="20170302 21:31:19.421"></status>
+<status status="PASS" endtime="20170808 02:51:47.976" critical="yes" starttime="20170808 02:51:47.524"></status>
 </test>
 <test id="s1-t2" name="Execute test_case2">
 <kw name="Run Testcase" library="robot_library">
 <arguments>
 <arg>test_case2.py</arg>
 </arguments>
-<msg timestamp="20170302 21:31:19.459" level="INFO">None
-python: can't open file 'tcid': [Errno 2] No such file or directory</msg>
-<status status="PASS" endtime="20170302 21:31:19.459" starttime="20170302 21:31:19.441"></status>
+<msg timestamp="20170808 02:51:48.428" level="INFO">========================================
+         Checking ssh service           
+========================================
+Trying to connect to host ...
+Connection Established !!
+---------Result--------
+out: [u'\u25cf ssh.service - OpenBSD Secure Shell server\n', u'   Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enabled)\n', u'   Active: active (running) since Tue 2017-08-08 17:44:00 HKT; 7min ago\n', u' Main PID: 1002 (sshd)\n', u'    Tasks: 1\n', u'   Memory: 7.2M\n', u'      CPU: 147ms\n', u'   CGroup: /system.slice/ssh.service\n', u'           \u2514\u25001002 /usr/sbin/sshd -D\n', u'\n', u'Aug 08 17:46:21 ubuntu sshd[1536]: Accepted password for zarvis from 68.128.156.241 port 58164 ssh2\n', u'Aug 08 17:46:21 ubuntu sshd[1536]: pam_unix(sshd:session): session opened for user zarvis by (uid=0)\n', u'Aug 08 17:49:00 ubuntu sshd[1569]: Accepted password for zarvis from 68.128.156.241 port 58166 ssh2\n', u'Aug 08 17:49:00 ubuntu sshd[1569]: pam_unix(sshd:session): session opened for user zarvis by (uid=0)\n', u'Aug 08 17:49:00 ubuntu sshd[1602]: Accepted password for zarvis from 68.128.156.241 port 58168 ssh2\n', u'Aug 08 17:49:00 ubuntu sshd[1602]: pam_unix(sshd:session): session opened for user zarvis by (uid=0)\n', u'Aug 08 17:51:41 ubuntu sshd[1636]: Accepted password for zarvis from 68.128.156.241 port 58170 ssh2\n', u'Aug 08 17:51:41 ubuntu sshd[1636]: pam_unix(sshd:session): session opened for user zarvis by (uid=0)\n', u'Aug 08 17:51:42 ubuntu sshd[1670]: Accepted password for zarvis from 68.128.156.241 port 58172 ssh2\n', u'Aug 08 17:51:42 ubuntu sshd[1670]: pam_unix(sshd:session): session opened for user zarvis by (uid=0)\n']
+Service is up !!</msg>
+<status status="PASS" endtime="20170808 02:51:48.428" starttime="20170808 02:51:47.978"></status>
 </kw>
 <doc>Checking if ssh deamon is running fine</doc>
 <tags>
 <tag>This is for tagging</tag>
 <tag>This is test. This is test.</tag>
 </tags>
-<status status="PASS" endtime="20170302 21:31:19.460" critical="yes" starttime="20170302 21:31:19.440"></status>
+<status status="PASS" endtime="20170808 02:51:48.429" critical="yes" starttime="20170808 02:51:47.977"></status>
 </test>
 <doc>Test Suite for functionality of Service check</doc>
-<status status="PASS" endtime="20170302 21:31:19.460" starttime="20170302 21:31:19.341"></status>
+<status status="PASS" endtime="20170808 02:51:48.430" starttime="20170808 02:51:47.502"></status>
 </suite>
 <statistics>
 <total>
